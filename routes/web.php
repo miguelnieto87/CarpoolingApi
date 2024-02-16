@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\UsuariosController;
 /** @var \Laravel\Lumen\Routing\Router $router */
 
 /*
@@ -16,3 +16,13 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+
+$router->group(['prefix' => 'api'], function () use ($router) {
+    $router->get('lista', 'UsuariosController@Lista');
+    $router->post('login', 'UsuariosController@Login');
+    $router->post('registrar', 'UsuariosController@Registrar');
+});
+
+
+
+
